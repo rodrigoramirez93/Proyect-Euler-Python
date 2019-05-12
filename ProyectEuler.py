@@ -22,4 +22,24 @@ print(res)
 # find the sum of the even-valued terms.
 
 
+fibo = [1,2]
+i = 0
+res = []
+
+def fibonacci_recursive(fibo,i):
+        if (fibo[i+1] > 4000000):
+                fibo.pop(i+1)
+                return
+        else:
+                fibo.append(fibo[i]+fibo[i+1])
+                i += 1
+                fibonacci_recursive(fibo,i)
+
+fibonacci_recursive(fibo,i)
+
+for numbers in fibo:
+        if numbers % 2 == 0:
+                res.append(numbers)
+
+print(sum(res))
 
