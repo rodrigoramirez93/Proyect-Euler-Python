@@ -97,5 +97,47 @@ res = getMaxPrime(listFactors)
 print('\n' + 'Max prime is: ' + str(res))
 
 
+#Problem 4
+#A palindromic number reads the same both ways. 
+# The largest palindrome made from the product of two 2-digit numbers
+# is 9009 = 91 × 99.
+#Find the largest palindrome made from the product of two 3-digit numbers.
+
+palindrome = []
+
+
+def isPalindrome(number):
+        numberStr = str(number)
+        numberLength = len(numberStr)
+        if (numberLength % 2 == 0): #check if even 
+                firstPart = numberStr[:int(numberLength/2)]
+                secondPart = numberStr[int(numberLength/2):]
+                if(firstPart == secondPart[::-1]):
+                        return True
+                else:
+                        return False
+        else: #odd
+                firstPart = numberStr[:int(numberLength/2)]
+                secondPart = numberStr[int(numberLength/2)+1:]
+                if(firstPart == secondPart[::-1]):
+                        return True
+                else:
+                        return False
+
+
+
+for number in range(1,999):
+        for numbertwo in range(1,999):
+                n = number * numbertwo
+                if (isPalindrome(n)):
+                        palindrome.append(n)
+
+
+res = print(max(palindrome))
+        
+
+        
+
+
 
 
