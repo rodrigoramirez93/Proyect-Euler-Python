@@ -43,3 +43,59 @@ for numbers in fibo:
 
 print(sum(res))
 
+#Problem 3
+# The prime factors of 13195 are 5, 7, 13 and 29.
+# What is the largest prime factor of the number 600851475143 
+
+import sys
+sys.setrecursionlimit(10000)
+
+number = 100
+listFactors = []
+i = 2
+
+#Gets all factors
+def factoring_recursive(number,listFactors, i):
+        if number == 1:
+                return
+        if number % i == 0:
+                number = number/i
+                listFactors.append(i)
+                factoring_recursive(number, listFactors, i)
+        else:
+                i += 1
+                factoring_recursive(number, listFactors, i)
+        
+factoring_recursive(number,listFactors, i)
+
+print('List of factors of ' + str(number) + ': ' + str(listFactors) + '\n')
+
+#Check if number is prime
+def isPrime(number):
+        divideBy = []
+        for n in range(number - 1):
+                if number % (n+2) == 0:
+                        divideBy.append(n+2)
+
+        if (divideBy == [] or divideBy == [number]):
+                print(str(number) + ' is prime')
+                return True
+        else:
+                print('It\'s not prime, rest = 0 on :  ' +  str(divideBy))
+                return False
+
+primes = []
+
+def getMaxPrime(listFactors):
+        DistinctListFactors = list(dict.fromkeys(listFactors))
+        for numbers in DistinctListFactors:
+                if(isPrime(numbers)):
+                        primes.append(numbers)
+        return max(primes)
+
+res = getMaxPrime(listFactors)
+print('\n' + 'Max prime is: ' + str(res))
+
+
+
+
