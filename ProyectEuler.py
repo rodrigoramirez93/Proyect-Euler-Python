@@ -50,7 +50,7 @@ print(sum(res))
 import sys
 sys.setrecursionlimit(10000)
 
-number = 100
+number = 600851475143
 listFactors = []
 i = 2
 
