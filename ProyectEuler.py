@@ -5,13 +5,13 @@
 # # we get 3, 5, 6 and 9. The sum of these multiples is 23.
 # #Find the sum of all the multiples of 3 or 5 below 1000.
  
-# res = 0
+res = 0
 
-# for numbers in range(1000):
-#     if (numbers % 3 == 0 or numbers % 5 == 0):
-#         res = res + numbers
+for numbers in range(1000):
+    if (numbers % 3 == 0 or numbers % 5 == 0):
+        res = res + numbers
 
-# print(res)
+print(res)
 
 # #Problem 2
 
@@ -22,79 +22,79 @@
 # # find the sum of the even-valued terms.
 
 
-# fibo = [1,2]
-# i = 0
-# res = []
+fibo = [1,2]
+i = 0
+res = []
 
-# def fibonacci_recursive(fibo,i):
-#         if (fibo[i+1] > 4000000):
-#                 fibo.pop(i+1)
-#                 return
-#         else:
-#                 fibo.append(fibo[i]+fibo[i+1])
-#                 i += 1
-#                 fibonacci_recursive(fibo,i)
+def fibonacci_recursive(fibo,i):
+        if (fibo[i+1] > 4000000):
+                fibo.pop(i+1)
+                return
+        else:
+                fibo.append(fibo[i]+fibo[i+1])
+                i += 1
+                fibonacci_recursive(fibo,i)
 
-# fibonacci_recursive(fibo,i)
+fibonacci_recursive(fibo,i)
 
-# for numbers in fibo:
-#         if numbers % 2 == 0:
-#                 res.append(numbers)
+for numbers in fibo:
+        if numbers % 2 == 0:
+                res.append(numbers)
 
-# print(sum(res))
+print(sum(res))
 
 # #Problem 3
 # # The prime factors of 13195 are 5, 7, 13 and 29.
 # # What is the largest prime factor of the number 600851475143 
 
-# import sys
-# sys.setrecursionlimit(10000)
+import sys
+sys.setrecursionlimit(10000)
 
-# number = 600851475143
-# listFactors = []
-# i = 2
+number = 600851475143
+listFactors = []
+i = 2
 
-# #Gets all factors
-# def factoring_recursive(number,listFactors, i):
-#         if number == 1:
-#                 return
-#         if number % i == 0:
-#                 number = number/i
-#                 listFactors.append(i)
-#                 factoring_recursive(number, listFactors, i)
-#         else:
-#                 i += 1
-#                 factoring_recursive(number, listFactors, i)
+#Gets all factors
+def factoring_recursive(number,listFactors, i):
+        if number == 1:
+                return
+        if number % i == 0:
+                number = number/i
+                listFactors.append(i)
+                factoring_recursive(number, listFactors, i)
+        else:
+                i += 1
+                factoring_recursive(number, listFactors, i)
         
-# factoring_recursive(number,listFactors, i)
+factoring_recursive(number,listFactors, i)
 
-# print('List of factors of ' + str(number) + ': ' + str(listFactors) + '\n')
+print('List of factors of ' + str(number) + ': ' + str(listFactors) + '\n')
 
-# #Check if number is prime
-# def isPrime(number):
-#         divideBy = []
-#         for n in range(number - 1):
-#                 if number % (n+2) == 0:
-#                         divideBy.append(n+2)
+#Check if number is prime
+def isPrime(number):
+        divideBy = []
+        for n in range(number - 1):
+                if number % (n+2) == 0:
+                        divideBy.append(n+2)
 
-#         if (divideBy == [] or divideBy == [number]):
-#                 print(str(number) + ' is prime')
-#                 return True
-#         else:
-#                 print('It\'s not prime, rest = 0 on :  ' +  str(divideBy))
-#                 return False
+        if (divideBy == [] or divideBy == [number]):
+                print(str(number) + ' is prime')
+                return True
+        else:
+                print('It\'s not prime, rest = 0 on :  ' +  str(divideBy))
+                return False
 
-# primes = []
+primes = []
 
-# def getMaxPrime(listFactors):
-#         DistinctListFactors = list(dict.fromkeys(listFactors))
-#         for numbers in DistinctListFactors:
-#                 if(isPrime(numbers)):
-#                         primes.append(numbers)
-#         return max(primes)
+def getMaxPrime(listFactors):
+        DistinctListFactors = list(dict.fromkeys(listFactors))
+        for numbers in DistinctListFactors:
+                if(isPrime(numbers)):
+                        primes.append(numbers)
+        return max(primes)
 
-# res = getMaxPrime(listFactors)
-# print('\n' + 'Max prime is: ' + str(res))
+res = getMaxPrime(listFactors)
+print('\n' + 'Max prime is: ' + str(res))
 
 
 # #Problem 4
@@ -103,37 +103,37 @@
 # # is 9009 = 91 × 99.
 # #Find the largest palindrome made from the product of two 3-digit numbers.
 
-# palindrome = []
+palindrome = []
 
 
-# def isPalindrome(number):
-#         numberStr = str(number)
-#         numberLength = len(numberStr)
-#         if (numberLength % 2 == 0): #check if even 
-#                 firstPart = numberStr[:int(numberLength/2)]
-#                 secondPart = numberStr[int(numberLength/2):]
-#                 if(firstPart == secondPart[::-1]):
-#                         return True
-#                 else:
-#                         return False
-#         else: #odd
-#                 firstPart = numberStr[:int(numberLength/2)]
-#                 secondPart = numberStr[int(numberLength/2)+1:]
-#                 if(firstPart == secondPart[::-1]):
-#                         return True
-#                 else:
-#                         return False
+def isPalindrome(number):
+        numberStr = str(number)
+        numberLength = len(numberStr)
+        if (numberLength % 2 == 0): #check if even 
+                firstPart = numberStr[:int(numberLength/2)]
+                secondPart = numberStr[int(numberLength/2):]
+                if(firstPart == secondPart[::-1]):
+                        return True
+                else:
+                        return False
+        else: #odd
+                firstPart = numberStr[:int(numberLength/2)]
+                secondPart = numberStr[int(numberLength/2)+1:]
+                if(firstPart == secondPart[::-1]):
+                        return True
+                else:
+                        return False
 
 
 
-# for number in range(1,999):
-#         for numbertwo in range(1,999):
-#                 n = number * numbertwo
-#                 if (isPalindrome(n)):
-#                         palindrome.append(n)
+for number in range(1,999):
+        for numbertwo in range(1,999):
+                n = number * numbertwo
+                if (isPalindrome(n)):
+                        palindrome.append(n)
 
 
-# res = print(max(palindrome))
+res = print(max(palindrome))
         
 
 
@@ -144,46 +144,61 @@
 
 
 
-listas = []
 
-def calculateMcM(numeros):
-        lista = []
-        for numero in numeros:
+lists = []
+LCM = {}
+LCMDicts = []
+keys = []
+finalDict = {}
+
+def result(dic):
+        res = 1
+        for key,values in dic.items():
+                res = res * key**values
+        print('Multiply them => result: ' + str(res))
+
+                
+
+
+def getFinalDictionary(LCMDicts):
+        for dicts in LCMDicts:
+                for key,value in dicts.items():
+                        if(key not in finalDict):
+                                finalDict[key] = value
+                        if((dicts[key]) != (finalDict[key]) and dicts.get(key) > finalDict.get(key)):
+                                finalDict[key] = dicts.get(key)
+        print('Refine LCM with the highest power: ' + str(finalDict))
+        result(finalDict)
+
+
+def dictionaryLCM(lists):
+        for _list in lists:
+                for number in _list:
+                        LCM[number] = _list.count(number)
+                LCMDicts.append(LCM.copy())
+                LCM.clear()
+        print('Dictionary of LCM: ' + str(LCMDicts))
+        return getFinalDictionary(LCMDicts)
+
+def calculateLCM(numbers):
+        print('Begin: LCM(a..b): ' + str(numbers)) 
+        _list = []
+        for number in numbers:
                 i = 2
-                while(numero != 1):
-                        if (numero % i == 0):
-                                print(str(numero) +' % '+ str(i) + ' = ' + str(numero%i))
-                                numero = numero / i
-                                lista.append(i)
+                while(number != 1):
+                        if (number % i == 0):
+                                number = number / i
+                                _list.append(i)
                         else:
                                 i += 1
-                if (numero == 1):
-                        listas.append(lista.copy())
-                        print('lista: ' + str(lista))
-                        lista.clear()
-                        print('listas: ' + str(listas))
-        dictionaryMcm(listas)
+                if (number == 1 and len(_list) != 0):
+                        lists.append(_list.copy())
+                        _list.clear()
+        print('List of LCM: ' + str(lists))
+        dictionaryLCM(lists)
 
-mcm = {}
-mcmDicts = []
+calculateLCM([1,2,3,4,5,6,7,8,9,10])
 
-def dictionaryMcm(listas):
-        for lista in listas:
-                for number in lista:
-                        mcm[number] = lista.count(number)
-                mcmDicts.append(mcm.copy())
-                mcm.clear()
-        result(mcmDicts)
-
-def result(mcmDicts):
-        for dicts in mcmDicts:
-                print('dicts: ' + str(dicts))
-        
- 
-        
-
-calculateMcM([1,2,3,4,5,6,7,8,9,10])
-# dictionaryMcm(temp)
 
 
 
